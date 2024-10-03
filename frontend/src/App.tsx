@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import SelectComponent from "./components/select";
+import "./index.css";
 
 interface User {
   username: string;
@@ -27,28 +29,35 @@ function App(): React.ReactElement<AppProps> {
   };
 
   return (
-    <div className="App">
-      <div className="userDisplay">
-        {listOfUsers.map((user) => {
-          return (
-            <div key={user.username}>
-              <h1>Username: {user.username}</h1>
-            </div>
-          );
-        })}
-      </div>
+    <main>
+      {/* <div className="App">
+        <div className="userDisplay">
+          {listOfUsers.map((user) => {
+            return (
+              <div key={user.username}>
+                <h1>Username: {user.username}</h1>
+              </div>
+            );
+          })}
+        </div>
+
+        <div>
+          <input
+            type="text"
+            placeholder="username..."
+            onChange={(event) => {
+              setUsername(event.target.value);
+            }}
+          />
+          <button onClick={createUser}>Create User</button>
+        </div>
+      </div> */}
 
       <div>
-        <input
-          type="text"
-          placeholder="username..."
-          onChange={(event) => {
-            setUsername(event.target.value);
-          }}
-        />
-        <button onClick={createUser}>Create User</button>
+        <h2>Attacking Pokemon</h2>
+        <SelectComponent />
       </div>
-    </div>
+    </main>
   );
 }
 
