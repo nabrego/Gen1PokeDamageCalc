@@ -3,9 +3,11 @@ const app = express();
 const mongoose = require("mongoose");
 const UserModel = require('./models/Users');
 const cors = require("cors");
+const damCalcRoute = require("./routes/damCalcRoute");
 
 app.use(express.json());
 app.use(cors());
+app.use('/', damCalcRoute);
 
 mongoose.connect("mongodb+srv://nickabrego1:qt96H7b45faYGRFd@pokemon.ldci5.mongodb.net/Pokemon?retryWrites=true&w=majority&appName=Pokemon");
 
