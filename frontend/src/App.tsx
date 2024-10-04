@@ -1,61 +1,164 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import SelectComponent from "./components/select";
+import SelectOffPokemon from "./components/InputOffPokemon";
+import SelectDefPokemon from "./components/InputDefPokemon";
+import InputMove from "./components/inputMove";
+import OffenseInputs from "./components/OffenseInputs";
+import DefenseInputs from "./components/defenseInputs";
 import "./index.css";
 
 interface User {
   username: string;
 }
 
+interface OptionType {
+  value: string;
+  label: string;
+}
+
 interface AppProps {}
 
-function App(): React.ReactElement<AppProps> {
-  const [listOfUsers, setListOfUsers] = useState<User[]>([]);
-  const [username, setUsername] = useState<string>("");
+const App: React.FC = () => {
+  const [calcData, setCalcData] = useState({
+    move: '',
+    offensePoke: {
+      name: '',
+      ivs: {
+        hp: 0,
+        atk: 0,
+        def: 0,
+        spa: 0,
+        spe: 0,
+      },
+      boosts: {
+        atk: 0,
+        def: 0,
+        spa: 0,
+        spe: 0,
+      },
+      level: 0,
+    },
+    defensePoke: {
+      name: '',
+      ivs: {
+        hp: 0,
+        atk: 0,
+        def: 0,
+        spa: 0,
+        spe: 0,
+      },
+      boosts: {
+        atk: 0,
+        def: 0,
+        spa: 0,
+        spe: 0,
+      },
+      level: 0,
+    },
+  });
 
-  useEffect(() => {
-    Axios.get<User[]>("http://localhost:3001/getUsers").then((response) => {
-      setListOfUsers(response.data);
+  const handleMoveChange = (selectedMove: OptionType | null) => {
+    setCalcData((prev) => ({
+      ...prev,
+      move: selectedMove ? selectedMove.value : '',
+    }));
+  };
+
+  const handleOffPokeChange = (SelectedOffPokemon: OptionType | null) => {
+    setCalcData((prev) => ({
+      ...prev,
+      offensePoke: {
+        ...prev.offensePoke,
+        name: SelectedOffPokemon ? SelectedOffPokemon.value : '',
+      },
+    }));
+  };
+
+  const handleDefPokeChange = (SelectedDefPokemon: OptionType | null) => {
+    setCalcData((prev) => ({
+      ...prev,
+      defensePoke: {
+        ...prev.defensePoke,
+        name: SelectedDefPokemon ? SelectedDefPokemon.value : '',
+      },
+    }));
+  };
+
+  const handleOffInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const numericValue = Number(value);
+
+    setCalcData((prev) => {
+      const updatedOffensePoke = { ...prev.offensePoke };
+
+      if (name.startsWith("ivs")) {
+        updatedOffensePoke.ivs = {
+          ...prev.offensePoke.ivs,
+          [name]: numericValue,
+          ...(name === "ivsspc" ? { spa: numericValue, spe: numericValue } : {}),
+        };
+      }
+
+      if (name.startsWith("boosts")) {
+        updatedOffensePoke.boosts = {
+          ...prev.offensePoke.boosts,
+          [name]: numericValue,
+          ...(name === "boostsspc" ? { spa: numericValue, spe: numericValue } : {}),
+        };
+      }
+
+      if (name === "level") {
+        updatedOffensePoke.level = numericValue;
+      }
+
+      return {
+        ...prev,
+        offensePoke: updatedOffensePoke,
+      };
     });
-  }, []);
+  };
 
-  const createUser = () => {
-    Axios.post<User>("http://localhost:3001/createUser", {
-      username,
-    }).then((response) => {
-      alert("User Created");
-      setListOfUsers([...listOfUsers, { username }]);
+  const handleDefInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const numericValue = Number(value);
+
+    setCalcData((prev) => {
+      const updatedDefensePoke = { ...prev.defensePoke };
+
+      if (name.startsWith("ivs")) {
+        updatedDefensePoke.ivs = {
+          ...prev.defensePoke.ivs,
+          [name]: numericValue,
+          ...(name === "ivsspc" ? { spa: numericValue, spe: numericValue } : {}),
+        };
+      }
+
+      if (name.startsWith("boosts")) {
+        updatedDefensePoke.boosts = {
+          ...prev.defensePoke.boosts,
+          [name]: numericValue,
+          ...(name === "boostsspc" ? { spa: numericValue, spe: numericValue } : {}),
+        };
+      }
+
+      if (name === "level") {
+        updatedDefensePoke.level = numericValue;
+      }
+
+      return {
+        ...prev,
+        defensePoke: updatedDefensePoke,
+      };
     });
   };
 
   return (
     <main>
-      {/* <div className="App">
-        <div className="userDisplay">
-          {listOfUsers.map((user) => {
-            return (
-              <div key={user.username}>
-                <h1>Username: {user.username}</h1>
-              </div>
-            );
-          })}
-        </div>
-
-        <div>
-          <input
-            type="text"
-            placeholder="username..."
-            onChange={(event) => {
-              setUsername(event.target.value);
-            }}
-          />
-          <button onClick={createUser}>Create User</button>
-        </div>
-      </div> */}
-
       <div>
-        <h2>Attacking Pokemon</h2>
-        <SelectComponent />
+        <h3>Attacking Pokemon</h3>
+        <SelectOffPokemon onOffPokeChange={handleOffPokeChange}/>
+        <h5>Move Selection</h5>
+        <InputMove onMoveChange={handleMoveChange} />
       </div>
     </main>
   );

@@ -7,7 +7,11 @@ interface OptionType {
     label: string;
 }
 
-const SelectComponent: React.FC = () => {
+interface InputPokeData {
+  onPokeChange: (selectPoke: OptionType | null) => void;
+}
+
+const SelectDefPokemon: React.FC<InputPokeData> = ({ onPokeChange }) => {
   const [pokemonOptions, setPokemonOptions] = useState<OptionType[]>([]);
 
   useEffect(() => {
@@ -25,14 +29,20 @@ const SelectComponent: React.FC = () => {
     };
     fetchPokemon();
   }, []);
+
+  const handleDefPokeChange = (selectedOption: OptionType | null) => {
+    onPokeChange(selectedOption);
+  }
+
   return (
     <Select
       options = {pokemonOptions} 
-      placeholder = "select Pokemon..."
-      isSearchable={true}
-      isClearable={true}
+      placeholder = "Select Pokemon..."
+      isSearchable = {true}
+      isClearable = {true}
+      onChange = {handleDefPokeChange}
     />
   );
 };
 
-export default SelectComponent;
+export default SelectDefPokemon;
