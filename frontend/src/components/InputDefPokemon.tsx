@@ -8,10 +8,10 @@ interface OptionType {
 }
 
 interface InputPokeData {
-  onPokeChange: (selectPoke: OptionType | null) => void;
+  onDefPokeChange: (selectPoke: OptionType | null) => void;
 }
 
-const SelectDefPokemon: React.FC<InputPokeData> = ({ onPokeChange }) => {
+const SelectDefPokemon: React.FC<InputPokeData> = ({ onDefPokeChange }) => {
   const [pokemonOptions, setPokemonOptions] = useState<OptionType[]>([]);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const SelectDefPokemon: React.FC<InputPokeData> = ({ onPokeChange }) => {
   }, []);
 
   const handleDefPokeChange = (selectedOption: OptionType | null) => {
-    onPokeChange(selectedOption);
+    onDefPokeChange(selectedOption);
   }
 
   return (
