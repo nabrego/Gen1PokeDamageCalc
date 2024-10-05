@@ -10,7 +10,7 @@ export default {
         gameboyWhite: '#d4d4d4',
         gameboyBlue: '#3f4576',
         gameboyGreen: '#6b7900',
-        gameboyGray: '#898c90',
+        gameboyGray: '#6d7781',
         gameboyRed: '#8c255e',
       }
     },
