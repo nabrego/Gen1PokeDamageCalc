@@ -206,6 +206,16 @@ const App: React.FC = () => {
           Calculate Damage!
         </button>
       </div>
+      <footer className="absolute bottom-4 left-4 z-30">
+        <a
+          href="https://github.com/nabrego/Gen1PokeDamageCalc"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gameboyBlue font-mono"
+        >
+          GitHub Repository
+        </a>
+      </footer>
     </main>
   );
 }
