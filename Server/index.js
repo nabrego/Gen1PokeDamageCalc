@@ -11,3 +11,5 @@ app.use(cors(
     }
 ));
 app.use('/', damCalcRoute);
+
+module.exports = app;
