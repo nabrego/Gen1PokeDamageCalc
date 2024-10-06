@@ -7,12 +7,7 @@ app.use(express.json());
 app.use(cors(
     {
         origin: ["https://gen1-poke-damage-calc-ro5w.vercel.app"],
-        methods: ["POST", "GET"],
-        credentials: true
+        methods: ["POST", "GET"]
     }
 ));
 app.use('/', damCalcRoute);
-
-app.listen(3001, () => {
-    console.log("Server runs perfectly!");
-});
