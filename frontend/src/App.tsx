@@ -60,7 +60,7 @@ const App: React.FC = () => {
 
   const handleCalcDam = async () => {
     try {
-      const response = await Axios.post("http://localhost:3001/calculate-damage", {
+      const response = await Axios.post("https://gen1-poke-damage-calc-api.vercel.app/calculate-damage", {
         move: calcData.move,
         offensePoke: calcData.offensePoke,
         defensePoke: calcData.defensePoke,
