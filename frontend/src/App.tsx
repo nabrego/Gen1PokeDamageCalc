@@ -170,7 +170,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <main className="bg-gameboyWhite min-h-screen flex justify-between">
+    <main className="bg-gameboyWhite min-h-screen flex flex-col items-center justify-start pt-40">
       {/* Background elements */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 mt-4 w-80 h-80 rounded-lg bg-gameboyGray"></div>
       
@@ -189,36 +189,38 @@ const App: React.FC = () => {
         />
       </div>
       
-      {/* Attacking Pokemon section */}
-      <div className="relative z-20 flex flex-col items-start w-auto px-6 py-4 pb-2 ml-52 mt-40 border-2 border-gameboyBlue">
-        <h3 className="font-mono text-gameboyBlue mb-1">Attacking Pokemon</h3>
-        <div className="w-64 mb-2">
-          <SelectOffPokemon onOffPokeChange={handleOffPokeChange} />
+      <div className="flex justify-between w-full px-20">
+        {/* Attacking Pokemon section */}
+        <div className="flex flex-col items-start w-auto px-6 py-4 pb-2 border-2 border-gameboyBlue">
+          <h3 className="font-mono text-gameboyBlue mb-1">Attacking Pokemon</h3>
+          <div className="w-64 mb-2">
+            <SelectOffPokemon onOffPokeChange={handleOffPokeChange} />
+          </div>
+          <h3 className="font-mono text-gameboyBlue mb-1">Attacker Stats</h3>
+          <div className="mb-2">
+            <OffenseInputs handleOffInputChange={handleOffInputChange} />
+          </div>
+          <h3 className="font-mono text-gameboyBlue mb-1">Move Selection</h3>
+          <div className="w-64">
+            <InputMove onMoveChange={handleMoveChange} />
+          </div>
         </div>
-        <h3 className="font-mono text-gameboyBlue mb-1">Attacker Stats</h3>
-        <div className="mb-2">
-          <OffenseInputs handleOffInputChange={handleOffInputChange} />
-        </div>
-        <h3 className="font-mono text-gameboyBlue mb-1">Move Selection</h3>
-        <div className="w-64">
-          <InputMove onMoveChange={handleMoveChange} />
-        </div>
-      </div>
-      
-      {/* Defending Pokemon section */}
-      <div className="relative z-20 flex flex-col items-end w-auto px-6 py-4 pb-2 mr-40 mt-40 border-2 border-gameboyBlue">
-        <h3 className="font-mono text-gameboyBlue mb-1">Defending Pokemon</h3>
-        <div className="w-64 mb-2">
-          <SelectDefPokemon onDefPokeChange={handleDefPokeChange} />
-        </div>
-        <h3 className="font-mono text-gameboyBlue mb-1">Defender Stats</h3>
-        <div>
-          <DefenseInputs handleDefInputChange={handleDefInputChange} />
+        
+        {/* Defending Pokemon section */}
+        <div className="flex flex-col items-end w-auto px-6 py-4 pb-2 border-2 border-gameboyBlue">
+          <h3 className="font-mono text-gameboyBlue mb-1">Defending Pokemon</h3>
+          <div className="w-64 mb-2">
+            <SelectDefPokemon onDefPokeChange={handleDefPokeChange} />
+          </div>
+          <h3 className="font-mono text-gameboyBlue mb-1">Defender Stats</h3>
+          <div>
+            <DefenseInputs handleDefInputChange={handleDefInputChange} />
+          </div>
         </div>
       </div>
       
       {/* Calculate button */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 mt-96 z-30">
+      <div className="mt-8">
         <button 
           className="font-mono border-double border-4 border-gameboyRed rounded-full drop-shadow-xl" 
           onClick={handleCalcDam}
@@ -228,7 +230,7 @@ const App: React.FC = () => {
       </div>
       
       {/* Footer */}
-      <footer className="absolute bottom-4 left-4 z-30">
+      <footer className="mt-auto py-4">
         <a
           href="https://github.com/nabrego/Gen1PokeDamageCalc"
           target="_blank"
