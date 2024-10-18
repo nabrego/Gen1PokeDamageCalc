@@ -190,28 +190,28 @@ const App: React.FC = () => {
       </div>
       
       {/* Attacking Pokemon section */}
-      <div className="relative z-20 flex flex-col items-start w-auto px-6 py-4 ml-52 mt-40 border-2 border-gameboyBlue">
-        <h3 className="font-mono text-gameboyBlue mb-2">Attacking Pokemon</h3>
-        <div className="w-64 mb-4"> {/* Fixed width */}
+      <div className="relative z-20 flex flex-col items-start w-auto px-6 py-4 pb-2 ml-52 mt-40 border-2 border-gameboyBlue">
+        <h3 className="font-mono text-gameboyBlue mb-1">Attacking Pokemon</h3>
+        <div className="w-64 mb-2">
           <SelectOffPokemon onOffPokeChange={handleOffPokeChange} />
         </div>
-        <h3 className="font-mono text-gameboyBlue mb-2">Attacker Stats</h3>
-        <div className="mb-4">
+        <h3 className="font-mono text-gameboyBlue mb-1">Attacker Stats</h3>
+        <div className="mb-2">
           <OffenseInputs handleOffInputChange={handleOffInputChange} />
         </div>
-        <h3 className="font-mono text-gameboyBlue mb-2">Move Selection</h3>
-        <div className="w-64"> {/* Fixed width */}
+        <h3 className="font-mono text-gameboyBlue mb-1">Move Selection</h3>
+        <div className="w-64">
           <InputMove onMoveChange={handleMoveChange} />
         </div>
       </div>
       
       {/* Defending Pokemon section */}
-      <div className="relative z-20 flex flex-col items-end w-auto px-6 py-4 mr-40 mt-40 border-2 border-gameboyBlue">
-        <h3 className="font-mono text-gameboyBlue mb-2">Defending Pokemon</h3>
-        <div className="w-64 mb-4"> {/* Fixed width */}
+      <div className="relative z-20 flex flex-col items-end w-auto px-6 py-4 pb-2 mr-40 mt-40 border-2 border-gameboyBlue">
+        <h3 className="font-mono text-gameboyBlue mb-1">Defending Pokemon</h3>
+        <div className="w-64 mb-2">
           <SelectDefPokemon onDefPokeChange={handleDefPokeChange} />
         </div>
-        <h3 className="font-mono text-gameboyBlue mb-2">Defender Stats</h3>
+        <h3 className="font-mono text-gameboyBlue mb-1">Defender Stats</h3>
         <div>
           <DefenseInputs handleDefInputChange={handleDefInputChange} />
         </div>
