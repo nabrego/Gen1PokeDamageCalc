@@ -230,7 +230,7 @@ const App: React.FC = () => {
       </div>
       
       {/* Footer */}
-      <footer className="mt-auto py-4">
+      {/* <footer className="mt-auto py-4">
         <a
           href="https://github.com/nabrego/Gen1PokeDamageCalc"
           target="_blank"
@@ -239,7 +239,7 @@ const App: React.FC = () => {
         >
           GitHub Repository
         </a>
-      </footer>
+      </footer> */}
     </main>
   );
 }
