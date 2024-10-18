@@ -6,10 +6,16 @@ interface DefenseInputInfo {
 
 const DefenseInputs: React.FC<DefenseInputInfo> = ({ handleDefInputChange }) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, min: number, max: number) => {
-        let value = Number(e.target.value);
-        if (value < min) value = min;
-        if (value > max) value = max;
-        e.target.value = String(value);
+        const validatedInput = e.target.value.replace(/[^0-9-]/g, '');
+        
+        if (validatedInput === '' || validatedInput === '-') {
+            e.target.value = validatedInput;
+        } else {
+            let value = Number(validatedInput);
+            value = Math.max(min, Math.min(max, value));
+            e.target.value = String(value);
+        }
+        
         handleDefInputChange(e);
     };
     return (
