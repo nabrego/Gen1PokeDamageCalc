@@ -171,7 +171,10 @@ const App: React.FC = () => {
 
   return (
     <main className="bg-gameboyWhite min-h-screen flex justify-between">
+      {/* Background elements */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 mt-4 w-80 h-80 rounded-lg bg-gameboyGray"></div>
+      
+      {/* Result display and Professor image */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 mt-12 w-64 h-64 bg-gameboyGreen drop-shadow-lg z-10 flex flex-col items-center justify-start">
         {result && (
           <div className="text-center p-2 mt-2">
@@ -179,8 +182,14 @@ const App: React.FC = () => {
             <p className="font-mono text-gameboyWhite">{result}</p>
           </div>
         )}
-        <img className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-2 w-32 h-auto" src={Professor} alt="Professor" />
+        <img 
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-2 w-32 h-auto" 
+          src={Professor} 
+          alt="Professor" 
+        />
       </div>
+      
+      {/* Attacking Pokemon section */}
       <div className="relative z-20 flex flex-col items-start w-1/2 px-4 ml-52 mt-40">
         <h3 className="font-mono text-gameboyBlue">Attacking Pokemon</h3>
         <div className="w-1/5">
@@ -193,6 +202,8 @@ const App: React.FC = () => {
           <InputMove onMoveChange={handleMoveChange} />
         </div>
       </div>
+      
+      {/* Defending Pokemon section */}
       <div className="relative z-20 flex flex-col items-end w-1/2 px-4 mr-40 mt-40">
         <h3 className="font-mono text-gameboyBlue mr-40">Defending Pokemon</h3>
         <div className="w-1/5 mr-48">
@@ -201,11 +212,18 @@ const App: React.FC = () => {
         <h3 className="font-mono text-gameboyBlue mr-48">Defender Stats</h3>
         <DefenseInputs handleDefInputChange={handleDefInputChange} />
       </div>
+      
+      {/* Calculate button */}
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 mt-96 z-30">
-        <button className="font-mono border-double border-4 border-gameboyRed rounded-full drop-shadow-xl" onClick={handleCalcDam}>
+        <button 
+          className="font-mono border-double border-4 border-gameboyRed rounded-full drop-shadow-xl" 
+          onClick={handleCalcDam}
+        >
           Calculate Damage!
         </button>
       </div>
+      
+      {/* Footer */}
       <footer className="absolute bottom-4 left-4 z-30">
         <a
           href="https://github.com/nabrego/Gen1PokeDamageCalc"
