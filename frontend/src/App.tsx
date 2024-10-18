@@ -170,7 +170,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <main className="bg-gameboyWhite min-h-screen flex justify-between"> {/* Added flex container */}
+    <main className="bg-gameboyWhite min-h-screen flex justify-between">
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 mt-4 w-80 h-80 rounded-lg bg-gameboyGray"></div>
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 mt-12 w-64 h-64 bg-gameboyGreen drop-shadow-lg z-10 flex flex-col items-center justify-start">
         {result && (
@@ -181,7 +181,7 @@ const App: React.FC = () => {
         )}
         <img className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-2 w-32 h-auto" src={Professor} alt="Professor" />
       </div>
-      <div className="relative z-20 flex flex-col items-start w-1/2 px-4 ml-52 mt-40"> {/* Left column for Attacking Pokemon */}
+      <div className="relative z-20 flex flex-col items-start w-1/2 px-4 ml-52 mt-40">
         <h3 className="font-mono text-gameboyBlue">Attacking Pokemon</h3>
         <div className="w-1/5">
           <SelectOffPokemon onOffPokeChange={handleOffPokeChange} />
