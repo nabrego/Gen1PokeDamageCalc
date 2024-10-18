@@ -7,10 +7,16 @@ interface OffenseInputInfo {
 
 const OffenseInputs: React.FC<OffenseInputInfo> = ({ handleOffInputChange }) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, min: number, max: number) => {
-        const numericValue = e.target.value.replace(/[^0-9]/g, '');
-        let value = Number(numericValue);
-        value = Math.max(min, Math.min(max, value));
-        e.target.value = String(value);
+        const validatedInput = e.target.value.replace(/[^0-9-]/g, '');
+        
+        if (validatedInput === '' || validatedInput === '-') {
+            e.target.value = validatedInput;
+        } else {
+            let value = Number(validatedInput);
+            value = Math.max(min, Math.min(max, value));
+            e.target.value = String(value);
+        }
+        
         handleOffInputChange(e);
     };
     return (
