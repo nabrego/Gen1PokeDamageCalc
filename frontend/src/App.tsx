@@ -190,7 +190,7 @@ const App: React.FC = () => {
       </div>
       
       {/* Attacking Pokemon section */}
-      <div className="relative z-20 flex flex-col items-start w-1/2 px-4 ml-52 mt-40">
+      <div className="relative z-20 flex flex-col items-start w-1/2 px-4 ml-52 mt-40 border-2 border-gameboyBlue">
         <h3 className="font-mono text-gameboyBlue">Attacking Pokemon</h3>
         <div className="w-2/5">
           <SelectOffPokemon onOffPokeChange={handleOffPokeChange} />
