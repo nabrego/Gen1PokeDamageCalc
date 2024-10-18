@@ -192,13 +192,13 @@ const App: React.FC = () => {
       {/* Attacking Pokemon section */}
       <div className="relative z-20 flex flex-col items-start w-1/2 px-4 ml-52 mt-40">
         <h3 className="font-mono text-gameboyBlue">Attacking Pokemon</h3>
-        <div className="w-1/5">
+        <div className="w-2/5">
           <SelectOffPokemon onOffPokeChange={handleOffPokeChange} />
         </div>
         <h3 className="font-mono text-gameboyBlue">Attacker Stats</h3>
         <OffenseInputs handleOffInputChange={handleOffInputChange} />
         <h3 className="font-mono text-gameboyBlue">Move Selection</h3>
-        <div className="w-1/5">
+        <div className="w-2/5">
           <InputMove onMoveChange={handleMoveChange} />
         </div>
       </div>
@@ -206,7 +206,7 @@ const App: React.FC = () => {
       {/* Defending Pokemon section */}
       <div className="relative z-20 flex flex-col items-end w-1/2 px-4 mr-40 mt-40">
         <h3 className="font-mono text-gameboyBlue mr-40">Defending Pokemon</h3>
-        <div className="w-1/5 mr-48">
+        <div className="w-2/5 mr-24">
           <SelectDefPokemon onDefPokeChange={handleDefPokeChange} />
         </div>
         <h3 className="font-mono text-gameboyBlue mr-48">Defender Stats</h3>
